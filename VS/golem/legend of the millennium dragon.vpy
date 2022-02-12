@@ -8,7 +8,7 @@ core = vs.core
 
 src = lvf.src(r"Z:\Torrent Downloads\Legend.of.the.Millennium.Dragon.2011.Blu-Ray.1080p.AVC.DTS-HD.MA5.1-CHDBits\BDMV\STREAM\00800.m2ts", force_lsmas=True)
 src = depth(src, 16)
-src = core.std.Crop(src, 0,0,132,130)
+src = core.std.Crop(src, 0,0,136,134)
 src = core.resize.Bicubic(src, 1128, 480)
 
 deband = dbs.dumb3kdb(src, 16, 30, 0, 4, True)                       
@@ -19,7 +19,9 @@ grain = adptvgrnMod(deband_merge,strength=0.25, size=1.0, luma_scaling=8, sharp=
 cut1 = core.std.Trim(grain, 121342,121586)
 cut2 = core.std.Trim(grain, 121587,121754)
 cut3 = core.std.Trim(grain, 121755,121849)
-booru = core.std.Trim(grain, 121850, 122680)
+endo = core.std.Trim(grain, 121850, 122680)
 
-final = depth(booru, 8)
+hashimoto = cut1+cut2+cut3
+
+final = depth(hashimoto, 8)
 final.set_output()
