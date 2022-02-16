@@ -1,4 +1,3 @@
-from inspect import stack
 import vapoursynth as vs
 import lvsfunc as lvf
 import debandshit as dbs
