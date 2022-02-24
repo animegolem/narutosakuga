@@ -3,7 +3,6 @@ import lvsfunc as lvf
 import havsfunc as haf
 import debandshit as dbs
 from vsutil import depth
-from vardefunc.scale import nnedi3_upscale
 from adptvgrnMod import adptvgrnMod
 
 core = vs.core
