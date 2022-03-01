@@ -32,7 +32,7 @@ def bigcrop(clip: vs.VideoNode) -> vs.VideoNode:
     return scale
     
 def dotnl(clip: vs.VideoNode) -> vs.VideoNode:
-    tnlmeans = tnlmeans = haf.KNLMeansCL(crop, h=1.5, a=3)
+    tnlmeans = haf.KNLMeansCL(crop, h=1.5, a=3)
     dpir = lvf.deblock.vsdpir(tnlmeans, strength=35, mode='deblock', cuda=True, matrix=6)
     smd = haf.SMDegrain(dpir, tr=3, thSAD=200, RefineMotion=True, mfilter=dpir, CClip=dpir, contrasharp=True, prefilter=3)
     line_mask = lvf.mask.detail_mask(smd, 0, 1)
