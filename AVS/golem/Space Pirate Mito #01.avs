@@ -6,17 +6,17 @@ convertbits(8)
 AnimeIVTC(mode=1, ifade=True, cache=500, killcomb=1, aa=0, stabilize=true, aapel=4, aablk=4, aaov=2, precision=6)
 convertbits(16)
 Trim(0,2162).crop( 8,0,-8,-0).ContinuityFixer(0,0,0,2).SMDegrain(tr=3, thSAD=200, subpixel=3, pel=4, refinemotion=true, contrasharp=true, prefilter=6) ++ Trim(2163,17381).crop( 8,0,-8,-0).ContinuityFixer(0,0,0,2) ++ Trim(17382,17654).crop(8,0,-8,-4).ContinuityFixer(6,0,2,0).AddBorders(0,2,0,2) ++ Trim(17655,31784).crop( 8,0,-8,-0).ContinuityFixer(0,0,0,2) ++ Trim(31785,33939).crop( 6,0,-10,-4).ContinuityFixer(5,0,0,2).AddBorders(0,2,0,2) ++ Trim(33940, 34416).crop( 8,0,-8,-0).ContinuityFixer(0,0,0,2)
-
 Prefetch(8)
-
 FixChromaBleedingMod(1,0, strength=1)
 convertbits(8)
+
 #####CCD VirtualDub#####
 LoadVirtualDubPlugin("C:\Program Files (x86)\AviSynth+\plugins64+\ccd_64bit.vdf", "ccd", 0)    
 ConverttoRGB(matrix="Rec601")    
 ccd(5,1)   
 ConverttoYV12(matrix="Rec601")     
 #####################
+
 prefetch(1,4)
 convertbits(16)
 edgecleaner(8)
