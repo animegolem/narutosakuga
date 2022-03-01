@@ -5,8 +5,7 @@ import havsfunc as haf
 import muvsfunc as mvf
 from vapoursynth import GRAY
 from awsmfunc import bbmod
-from vsutil import depth
-from vsutil import iterate
+from vsutil import depth, iterate
 from adptvgrnMod import adptvgrnMod
 
 core = vs.core
