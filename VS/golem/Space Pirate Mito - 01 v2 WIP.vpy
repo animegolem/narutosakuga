@@ -76,5 +76,3 @@ grainyband = grainband(aa)
 crop.set_output(1)
 final = depth(grainyband, 10)
 final.set_output()
-
-
