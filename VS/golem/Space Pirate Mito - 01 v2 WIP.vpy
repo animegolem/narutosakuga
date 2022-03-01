@@ -8,6 +8,7 @@ from vsutil import depth, iterate
 from adptvgrnMod import adptvgrnMod
 
 core = vs.core
+
 def bigcrop(clip: vs.VideoNode) -> vs.VideoNode:
     crop1 = clip[0:17382]
     crop1 = core.std.Crop(crop1, 8,8,0,0)
