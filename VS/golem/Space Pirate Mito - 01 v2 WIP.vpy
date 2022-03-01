@@ -29,6 +29,7 @@ def bigcrop(clip: vs.VideoNode) -> vs.VideoNode:
     crop_merge = core.std.Splice([crop1, cropbump, crop3, cropED, crop4], mismatch=1)
     scale = core.resize.Bicubic(crop_merge, 704,528)
     return scale
+    
 def dotnl(clip: vs.VideoNode) -> vs.VideoNode:
     tnlmeans = tnlmeans = haf.KNLMeansCL(crop, h=1.5, a=3)
     dpir = lvf.deblock.vsdpir(tnlmeans, strength=35, mode='deblock', cuda=True, matrix=6)
@@ -37,11 +38,13 @@ def dotnl(clip: vs.VideoNode) -> vs.VideoNode:
     mask_THICK = iterate(line_mask, core.std.Inflate, 10)
     SMDpir_merge = core.std.MaskedMerge(clip, smd, mask_THICK)
     return SMDpir_merge
+    
 def based_clamp(clip: vs.VideoNode) -> vs.VideoNode:
     aa_light = lvf.aa.transpose_aa(clip, eedi3=False)
     aa_heavy = lvf.aa.based_aa(clip, shader_file=r"D:\2. VapourSynth Scripts\.plugins\FSRCNNX_x2_56-16-4-1.glsl", gamma=30, alpha=.25)
     aa_merge = lvf.aa.clamp_aa(clip, aa_light, aa_heavy, 1)
     return aa_merge
+    
 def grainband(clip: vs.VideoNode) -> vs.VideoNode:
     deband = dbs.dumb3kdb(clip, 16, 64, 0, 4, True)                       
     deband_mask = lvf.mask.detail_mask(clip, 0, 1)
